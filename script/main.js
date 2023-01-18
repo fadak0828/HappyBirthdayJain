@@ -76,7 +76,7 @@ const animationTimeline = async () => {
           const arraySum = array.reduce((a, value) => a + value, 0);
           const average = arraySum / array.length;
           console.log(Math.round(average));
-          if (average >= 80) {
+          if (average >= 20) {
             tl.resume();
             analyser.disconnect();
             microphone.disconnect();
