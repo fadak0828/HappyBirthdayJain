@@ -25,7 +25,7 @@ const fetchData = () => {
 };
 
 // Animation Timeline
-const animationTimeline = () => {
+const animationTimeline = async () => {
   // Spit chars that needs to be animated individually
   const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
   const hbd = document.getElementsByClassName("wish-hbd")[0];
@@ -53,6 +53,45 @@ const animationTimeline = () => {
   };
 
   const tl = new TimelineMax();
+
+  const waitCake = async () => {
+    tl.pause();
+    const gainSuccess = new Promise((resolve) => {
+      micStream
+      .then((stream) => {
+        const audioContext = new AudioContext();
+        const analyser = audioContext.createAnalyser();
+        const microphone = audioContext.createMediaStreamSource(stream);
+        const scriptProcessor = audioContext.createScriptProcessor(2048, 1, 1);
+    
+        analyser.smoothingTimeConstant = 0.8;
+        analyser.fftSize = 1024;
+    
+        microphone.connect(analyser);
+        analyser.connect(scriptProcessor);
+        scriptProcessor.connect(audioContext.destination);
+        scriptProcessor.onaudioprocess = function() {
+          const array = new Uint8Array(analyser.frequencyBinCount);
+          analyser.getByteFrequencyData(array);
+          const arraySum = array.reduce((a, value) => a + value, 0);
+          const average = arraySum / array.length;
+          console.log(Math.round(average));
+          if (average >= 80) {
+            tl.resume();
+            analyser.disconnect();
+            microphone.disconnect();
+            scriptProcessor.disconnect();
+          }
+        };
+      })
+      .catch((err) => {
+        /* handle the error */
+        console.log(err);
+      });
+    });
+  
+    await gainSuccess;
+  }
 
   tl
     .to(".container", 0.1, {
@@ -195,6 +234,51 @@ const animationTimeline = () => {
       0.2,
       "+=1"
     )
+    .to(
+      "body",
+      0.5,
+      {
+        backgroundColor: "#333"
+      }
+    )
+    .to(
+      ".cake",
+      0.5,
+      {
+        opacity: 1
+      },
+    )
+    .add(waitCake)
+    .to(
+      ".cake .flame",
+      0.5,
+      {
+        opacity: 0
+      }
+    )
+    .to(
+      ".cake .how-to-candle",
+      0.5,
+      {
+        opacity: 0
+      },
+      "-=0.5"
+    )
+    .to(
+      "body",
+      0.5,
+      {
+        backgroundColor: "#fff"
+      },
+      "+=2"
+    )
+    .to(
+      ".cake",
+      0.5,
+      {
+        opacity: 0
+      }
+    )
     .staggerFromTo(
       ".baloons img",
       2.5,
@@ -301,6 +385,8 @@ const animationTimeline = () => {
     tl.restart();
   });
 };
+const micStream = navigator.mediaDevices.getUserMedia({audio: true})
 
 // Run fetch and animation in sequence
 fetchData();
+

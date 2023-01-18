@@ -4,8 +4,13 @@ html {
 
 body {
   margin: 0;
-  font-family: "Work Sans", sans-serif;
 }
+
+body		{ font-family: 'NanumSquare', sans-serif }
+.normal		{ font-weight: 400 }
+.bold		{ font-weight: 700 }
+.bolder		{ font-weight: 800 }
+.light		{ font-weight: 300 }
 
 .container {
   height: 100vh;
@@ -38,7 +43,7 @@ body {
 }
 
 .one {
-  font-size: 4.5rem;
+  font-size: 42px;
 }
 
 .one > img {
@@ -49,12 +54,12 @@ body {
 }
 
 .two {
-  font-size: 1.2rem;
-  font-weight: lighter;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .three {
-  font-size: 3rem;
+  font-size: 42px;
 }
 
 .four .text-box {
@@ -116,17 +121,26 @@ body {
   position: relative;
 }
 
-.six img {
+.six .img-cutter {
+  position: relative;
   display: inline-block;
-  max-width: 100%;
+  width: 320px;
+  height: 320px;
+}
+
+.six img {
+  position: absolute;
+  top: -60%;
+  left: 0;
+  width: 100%;
   height: auto;
 }
 
 .six .hat {
   position: absolute;
-  width: 80px;
-  top: -35px;
-  left: 41.5%;
+  width: 100px;
+  top: -47px;
+  left: 190px;
   /* transform: scale(0.1); */
 }
 
@@ -232,31 +246,6 @@ body {
   cursor: pointer;
 }
 
-/* Media Queries */
-@media screen and (max-height: 1000px) {
-  .six .hat {
-    left: 40%;
-  }
-}
-
-@media screen and (max-height: 800px) {
-  .six .hat {
-    left: 37%;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
-@media screen and (max-height: 850px) and (max-width: 450px) {
-  .six .hat {
-    left: 32%;
-  }
-}
-
 @media screen and (max-width: 500px) {
   .container {
     width: 90%;
@@ -279,11 +268,6 @@ body {
     font-size: 10rem;
   }
 
-  .six .hat {
-    width: 50px;
-    top: -20px;
-  }
-
   .wish-hbd {
     font-size: 2.2em;
   }
@@ -295,5 +279,184 @@ body {
   .nine p {
     font-size: 1.5rem;
     font-weight: lighter;
+  }
+}
+
+.cake {
+  position: absolute;
+  width: 250px;
+  height: 200px;
+  top: 50% !important;
+  left: 50% !important;
+  margin-top: -70px;
+  margin-left: -125px;
+  opacity: 0;
+}
+
+.how-to-candle {
+  font-size: 24px;
+  color: white;
+  top: -120px;
+  left: 50%;
+  font-weight: bold;
+  width: 200%;
+  text-align: center;
+  transform: translate(-50%, 0);
+}
+
+/* .cake-page {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #333;
+} */
+
+.plate {
+  width: 270px;
+  height: 110px;
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0, 0, 0, 0.5);
+}
+
+.cake > * {
+  position: absolute;
+}
+
+.layer {
+  position: absolute;
+  display: block;
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #553c13;
+  box-shadow: 0 2px 0px #6a4b18, 0 4px 0px #33240b, 0 6px 0px #32230b, 0 8px 0px #31230b, 0 10px 0px #30220b, 0 12px 0px #2f220b, 0 14px 0px #2f210a, 0 16px 0px #2e200a, 0 18px 0px #2d200a, 0 20px 0px #2c1f0a, 0 22px 0px #2b1f0a, 0 24px 0px #2a1e09, 0 26px 0px #2a1d09, 0 28px 0px #291d09, 0 30px 0px #281c09;
+}
+
+.layer-top {
+  top: 0px;
+}
+
+.layer-middle {
+  top: 33px;
+}
+
+.layer-bottom {
+  top: 66px;
+}
+
+.icing {
+  top: 2px;
+  left: 5px;
+  background-color: #f0e4d0;
+  width: 240px;
+  height: 90px;
+  border-radius: 50%;
+}
+.icing:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  bottom: 6px;
+  left: 5px;
+  background-color: #f4ebdc;
+  box-shadow: 0 0 4px #f6efe3, 0 0 4px #f6efe3, 0 0 4px #f6efe3;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.drip {
+  display: block;
+  width: 50px;
+  height: 60px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #f0e4d0;
+}
+
+.drip1 {
+  top: 53px;
+  left: 5px;
+  transform: skewY(15deg);
+  height: 48px;
+  width: 40px;
+}
+
+.drip2 {
+  top: 69px;
+  left: 181px;
+  transform: skewY(-15deg);
+}
+
+.drip3 {
+  top: 54px;
+  left: 90px;
+  width: 80px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.candle {
+  background-color: #7B020B;
+  width: 16px;
+  height: 50px;
+  border-radius: 8px/4px;
+  top: -20px;
+  left: 50%;
+  margin-left: -8px;
+  z-index: 10;
+}
+.candle:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ad030f;
+}
+
+.flame {
+  position: absolute;
+  background-color: orange;
+  width: 15px;
+  height: 35px;
+  border-radius: 10px 10px 10px 10px/25px 25px 10px 10px;
+  top: -34px;
+  left: 50%;
+  margin-left: -7.5px;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  transform-origin: 50% 90%;
+  animation: flicker 1s ease-in-out alternate infinite;
+}
+
+@keyframes flicker {
+  0% {
+    transform: skewX(5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2);
+  }
+  25% {
+    transform: skewX(-5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  }
+  50% {
+    transform: skewX(10deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3);
+  }
+  75% {
+    transform: skewX(-10deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4);
+  }
+  100% {
+    transform: skewX(5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
   }
 }
