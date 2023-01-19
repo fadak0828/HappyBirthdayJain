@@ -154,8 +154,24 @@ const animationTimeline = async () => {
       0.05
     )
     .to(".fake-btn", 0.1, {
-      backgroundColor: "rgb(127, 206, 248)"
+      backgroundColor: "rgb(159 143 0)"
     })
+    .to(
+      ".hbd-chatbox",
+      0,
+      {
+        color: "white"
+      },
+      "-=0.1"
+    )
+    .to(
+      ".chat-balloon",
+      0.5,
+      {
+        opacity: 1,
+        bottom: 85
+      }
+    )
     .to(
       ".four",
       0.5,
@@ -164,7 +180,7 @@ const animationTimeline = async () => {
         opacity: 0,
         y: -150
       },
-      "+=0.7"
+      "+=1"
     )
     .from(".idea-1", 0.7, ideaTextTrans)
     .to(".idea-1", 0.7, ideaTextTransLeave, "+=1.5")
